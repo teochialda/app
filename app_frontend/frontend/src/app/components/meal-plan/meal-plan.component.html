@@ -1,0 +1,106 @@
+<div class="container">
+    <div class="left-side">
+      <h3>Select your meals:</h3>
+      <div class="meal-dropdowns">
+        <div class="dropdown">
+          <label for="breakfast">Breakfast:</label>
+          <select id="breakfast" [(ngModel)]="selectedBreakfast">
+            <option *ngFor="let food of foods" [value]="food.name">{{ food.name }}</option>
+          </select>
+          <button (click)="addFoodToMeal('breakfast')">Add</button>
+          <table *ngIf="selectedBreakfast">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Calories</th>
+                <th>Name</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let temp of foodSelectedForBreakfast; let i = index">
+                    <th scope="row">{{i + 1}}</th>
+                    <td scope="col">{{temp.name}}</td>
+                    <td scope="col">{{temp.calories}}</td>
+                    <td scope="col"><img [src]="temp.imageUrl" alt="Food Image" style="width: 150px; height: 100px;"></td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="dropdown">
+            <label for="lunch">Lunch:</label>
+            <select id="lunch" [(ngModel)]="selectedLunch">
+              <option *ngFor="let food of foods" [value]="food.name">{{ food.name }}</option>
+            </select>
+            <button (click)="addFoodToMeal('lunch')">Add</button>
+            <table *ngIf="selectedLunch">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Calories</th>
+                  <th>Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let temp of foodSelectedForLunch; let i = index">
+                    <th scope="row">{{i + 1}}</th>
+                    <td scope="col">{{temp.name}}</td>
+                    <td scope="col">{{temp.calories}}</td>
+                    <td scope="col">{{temp.imageUrl}}</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        <div class="dropdown">
+            <label for="dinner">Dinner:</label>
+            <select id="dinner" [(ngModel)]="selectedDinner">
+              <option *ngFor="let food of foods" [value]="food.name">{{ food.name }}</option>
+            </select>
+            <button (click)="addFoodToMeal('dinner')">Add</button>
+            <table *ngIf="selectedDinner">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Calories</th>
+                  <th>Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                    <tr *ngFor="let temp of foodSelectedForDinner; let i = index">
+                        <th scope="row">{{i + 1}}</th>
+                        <td scope="col">{{temp.name}}</td>
+                        <td scope="col">{{temp.calories}}</td>
+                        <td scope="col">{{temp.imageUrl}}</td>
+                    </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+    <div class="right-side">
+      <h3>Select an exercise:</h3>
+      <div class="dropdown">
+        <label for="exercise">Exercise:</label>
+        <select id="exercise" [(ngModel)]="selectedExercise">
+          <option *ngFor="let exercise of exercises" [value]="exercise.id">{{ exercise.name }}</option>
+        </select>
+        <button (click)="addExercise()">Add</button>
+        <table *ngIf="selectedExercise">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Calories</th>
+              <th>Name</th>
+            </tr>
+          </thead>
+          <tbody>
+                <tr *ngFor="let temp of exercisesSelected; let i = index">
+                    <th scope="row">{{i + 1}}</th>
+                    <td scope="col">{{temp.name}}</td>
+                    <td scope="col">{{temp.calories}}</td>
+                    <td scope="col">{{temp.imageUrl}}</td>
+                </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
